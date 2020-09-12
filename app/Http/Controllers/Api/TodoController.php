@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Http\Request;
-use App\Todo;
+use App\Models\Todo;
+use App\Events\TodoCreatedEvent;
 
 
 class TodoController extends Controller

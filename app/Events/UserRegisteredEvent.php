@@ -11,7 +11,6 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 
-
 class UserRegisteredEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

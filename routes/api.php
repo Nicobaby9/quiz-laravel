@@ -1,32 +1,22 @@
 <?php
 
-
-Route::group([
-
-    'middleware' => 'api',
-    'prefix' => 'auth',
-    'namespace' => 'Auth'
-
-], function ($router) {
+Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function() {
 
   Route::post('register' , 'RegisterController');
   Route::post('login' , 'LoginController');
-  Route::post('logout' , 'LogoutController');
+  Route::middleware('auth:api')->post('logout' , 'LogoutController');
 
 });
 
-
 Route::group([
-
     'middleware' => 'auth:api',
     'prefix' => 'todo',
     'namespace' => 'Api',
-
-], function ($router) {
+], function () {
 
   Route::get('/' , 'TodoController@index');
-  Route::post('/' , 'TodoController@store');
+  Route::post('/create-new-todo-list' , 'TodoController@store');
   Route::post('/change-done-status/{$id}' , 'TodoController@changeDoneStatus');
-  Route::post('/delete/{$id}' , 'TodoController@delete');
+  Route::delete('/delete/{$id}' , 'TodoController@delete');
 
 });
